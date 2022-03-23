@@ -1,14 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
-
+const router = require('./routes/book-routes')
 const app = express();
 
-// Middlewares 
-app.use('/', (req, res, next) => {
-    res.send("This is our")
-})
-
+// Middlewares
+app.use(express.json());
+app.use("/books", router); // Localhost: 5001/books 
 
 mongoose.connect(
     "mongodb+srv://admin:uUcEXHxeoJ0gkV4M@cluster0.23tu5.mongodb.net/bookstore?retryWrites=true&w=majority"
